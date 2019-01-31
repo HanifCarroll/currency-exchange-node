@@ -96,7 +96,6 @@ let convertPound = (to, amount) => {
     switch (to) {
         case 'usd': result = (amount * 1.31)
             break
-
         case 'yen': result = (amount * 142.68)
             break
 
@@ -105,7 +104,6 @@ let convertPound = (to, amount) => {
 
         case 'euro': result = (amount * 1.15)
             break
-
         default: console.log("Invalid Format")
     } 
     return result
@@ -116,16 +114,12 @@ let convertEuro = (to, amount) => {
     switch (to) {
         case 'usd': result = (amount * 1.14)
             break
-
         case 'yen': result = (amount * 124.56)
             break
-
         case 'peso': result = (amount * 21.88)
             break
-
         case 'pound': result = (amount * 0.87)
             break
-
         default: console.log("Invalid Format")
     }
     return result
