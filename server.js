@@ -1,76 +1,12 @@
-var express = require('express')
-var app = express()
+const express = require('express');
+const cors = require('cors');
+const convert = require('./convert');
 
-app.get('/exchange/:from/:to/:amount', (req, res) => {
-    let from = req.params.from
-    let to = req.params.to
-    let amount = req.params.amount
-    res.send(convert(from, to, amount).toString())
-})
+const app = express();
 
-let convert = (from, to, amount) => {
-    let result
-    switch (from) {
-        case 'usd': result = convertUsd(to, amount)
-            break
+app.use(cors());
 
-        case 'yen': result = convertYen(to, amount)
-            break
-
-        case 'peso': result = convertPeso(to, amount)
-            break
-
-        case 'pound': result = convertPound(to, amount)
-            break
-
-        case 'euro': result = convertEuro(to, amount)
-            break
-
-        default: console.log("Invalid Format")
-    }
-    return result
-} // Convert closing brace
-
-let convertUsd = (to, amount) => {
-    let result
-    switch (to) {
-        case 'yen': result = (amount * 108.83)
-            break
-
-        case 'peso': result = (amount * 19.14)
-            break
-
-        case 'pound': result = (amount * 0.76)
-            break
-
-        case 'euro': result = (amount * 0.87)
-            break
-
-        default: console.log("Invalid Format")
-      } 
-      return result
-} // End of convertUSD
-
-let convertYen = (to, amount) => {
-    let result
-    switch (to) {
-        case 'usd': result = (amount * .0092)
-            break
-
-        case 'peso': result = (amount * 0.18)
-            break
-
-        case 'pound': result = (amount * 0.007)
-            break
-
-        case 'euro': result = (amount * 0.008)
-            break
-
-        default: console.log("Invalid Format")
-    } 
-    return result
-} // End of convertYen
-
+<<<<<<< HEAD
 let convertPeso = (to, amount) => {
     let result
     switch (to) {
@@ -126,5 +62,13 @@ let convertEuro = (to, amount) => {
 } // End of convertEuro
 
 app.listen(8080)
+=======
+app.get('/exchange/:from/:to/:amount', (req, res) => {
+  const { from, to, amount } = req.params;
+  const total = convert(from, to, amount).toString();
+>>>>>>> f4e66376df59bc7fff26e43bd9421aa2a80861ac
 
+  res.send(total);
+});
 
+app.listen(8080, () => console.log('Server started...'));
