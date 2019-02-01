@@ -134,6 +134,13 @@ const convertEuro = (to, amount) => {
 }; // End of convertEuro
 const convert = (from, to, amount) => {
   let result;
+  from = from.toLowerCase();
+  to = to.toLowerCase();
+
+  if (amount < 0) {
+    return 'Invalid number.';
+  }
+
   switch (from) {
     case 'usd':
       result = convertUsd(to, amount);
